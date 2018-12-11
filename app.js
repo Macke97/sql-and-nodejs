@@ -19,4 +19,12 @@ app.get('/q', (req, res) => {
   })
 })
 
+app.get('/add', (req, res) => {
+  const { firstname } = req.query;
+  const qry = `INSERT INTO persons (firstname) VALUES ("${firstname}")`;
+  db.query(qry, (err, result) => {
+    res.json(result)
+  });
+})
+
 app.listen(3000, () => console.log('Listening on 3000'))
