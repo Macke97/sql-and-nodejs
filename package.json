@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Macke97/sql-and-nodejs/issues"
   },
-  "homepage": "https://github.com/Macke97/sql-and-nodejs#readme"
+  "homepage": "https://github.com/Macke97/sql-and-nodejs#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  }
 }
