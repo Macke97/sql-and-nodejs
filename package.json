@@ -1,0 +1,20 @@
+{
+  "name": "sql-and-nodejs",
+  "version": "1.0.0",
+  "description": "sql-and-nodejs",
+  "main": "app.sj",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Macke97/sql-and-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Macke97/sql-and-nodejs/issues"
+  },
+  "homepage": "https://github.com/Macke97/sql-and-nodejs#readme"
+}
