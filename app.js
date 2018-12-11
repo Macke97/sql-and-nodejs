@@ -1,30 +1,35 @@
 const express = require('express');
 const app = express();
-
-const mysql = require('mysql');
-const db = mysql.createConnection({
+let db;
+const mysql = require('promise-mysql');
+const connect = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'root',
   database: 'nodemysql',
   port: 3307
-});
-
-db.connect();
-
-app.get('/q', (req, res) => {
-  const qry = 'SELECT * FROM persons';
-  db.query(qry, (err, result, fields) => {
-    res.json(result);
+})
+  .then(conn => {
+    db = conn;
   })
+
+app.get('/q', async (req, res) => {
+  const qry = 'SELECT * FROM persons';
+  let result = await db.query(qry);
+  console.log(result)
+  res.json(result);
 })
 
 app.get('/add', (req, res) => {
-  const { firstname } = req.query;
+  const { firstname } = req.query; // Detta
+  // const firstname = req.query.firstname; // Eller detta
+  if (!firstname) {
+    return res.send('WTF')
+  }
   const qry = `INSERT INTO persons (firstname) VALUES ("${firstname}")`;
-  db.query(qry, (err, result) => {
+  db.query(qry).then(result => {
     res.json(result)
-  });
+  })
 })
 
 app.listen(3000, () => console.log('Listening on 3000'))

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Macke97/sql-and-nodejs#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "mysql": "^2.16.0"
+    "mysql": "^2.16.0",
+    "promise-mysql": "^3.3.1"
   }
 }
