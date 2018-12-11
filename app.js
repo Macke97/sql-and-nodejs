@@ -1,16 +1,22 @@
-let mysql = require('mysql');
-let connection = mysql.createConnection({
+const express = require('express');
+const app = express();
+
+const mysql = require('mysql');
+const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'root',
-  database: 'nodemysql'
+  database: 'nodemysql',
+  port: 3307
 });
 
-connection.connect();
+db.connect();
 
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-  if (error) throw error;
-  console.log('The solution is: ', results[0].solution);
-});
+app.get('/q', (req, res) => {
+  const qry = 'SELECT * FROM persons';
+  db.query(qry, (err, result, fields) => {
+    res.json(result);
+  })
+})
 
-connection.end();
+app.listen(3000, () => console.log('Listening on 3000'))
